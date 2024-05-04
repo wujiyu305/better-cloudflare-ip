@@ -2,6 +2,8 @@
 
 查找适合自己当前网络环境的优选Cloudflare Anycast IP
 
+旧版本即将停止服务，后续版本如果没有明显BUG也不再更新!
+
 ## 使用申明
 
 本项目侧重于研究任播技术中丢包率与网速的相互关系，仅供学习使用
@@ -43,22 +45,38 @@ o) 提供影视、软件和应用等下载服务的网站。
 
 此版本不需要用户上传任何数据到服务器，服务器仅提供IP地址池维护以及下发！
 
+## 用户自定义数据
+
+用户可自定义ips-v4.txt和ips-v6.txt的IP地址段，如果使用数据更新将会覆盖本地自定义的数据
+
+自定义ips-v4.txt的内容格式为 x.x.x.x或者x.x.x.x/x的CIDR写法，默认提取.前三位
+
+自定义ips-v6.txt的内容格式为 x:x:x:x:x:x:x:x或者x:x:x:x:x:x:x:x/x的CIDR写法，默认提取:前三位
+
+更多自定义玩法待用户自己发现
+
 ## Windows批处理版本
 
 请下载Release版本使用,不要使用Git Clone下载(会出现乱码)
 
-点击下载[Windows版本](https://proxy.freecdn.workers.dev/?url=https://github.com/badafans/better-cloudflare-ip/releases/latest/download/batch.zip)
+Windows 7用户推荐使用ANSI编码版本
+
+Windows 8及以上版本用户推荐使用UTF-8编码版本
+
+注:ANSI编码版本可以Windows全平台通用，部分Windows系统的BUG会导致控制台输出乱码
+
+点击下载[Windows版本](https://github.com/badafans/better-cloudflare-ip/releases/latest/download/batch.zip)
 
 ## Linux版本
 
 完整复制下方链接粘贴到控制台并回车，后续运行只需输入./cf.sh并回车即可
 
-目前已经测试 Termux、OpenWrt、Ubuntu、Debian、CentOS、MacOS、Raspbian、Armbian
+目前已经测试 Termux、OpenWrt、Ubuntu、Debian、CentOS、MacOS、Raspbian、Armbian、iSH
 
 ``` bash
-curl https://proxy.freecdn.workers.dev/?url=https://raw.githubusercontent.com/badafans/better-cloudflare-ip/master/shell/cf.sh -o cf.sh && chmod +x cf.sh && ./cf.sh
+curl https://raw.githubusercontent.com/badafans/better-cloudflare-ip/master/shell/cf.sh -o cf.sh && chmod +x cf.sh && ./cf.sh
 ```
 
 ## 引用声明
 
-对于 Cloudflare Anycast 节点汇总，定期扫描 Cloudflare 公开节点汇总而来，Cloudflare IP Ranges 来自 https://www.cloudflare.com/zh-cn/ips/
+对于 Cloudflare ASN https://bgp.he.net/AS13335 ，Cloudflare IP Ranges 来自 https://www.cloudflare.com/zh-cn/ips/
